@@ -1,0 +1,13 @@
+{
+  "name": "site-monitor",
+  "private": true,
+  "type": "module",
+  "description": "Lighthouse for every site on the Site Health dashboard, on a phone and a desktop; results/latest.json is what the weekly Site Health agent reads.",
+  "scripts": {
+    "scan": "node scan.mjs"
+  },
+  "dependencies": {
+    "chrome-launcher": "1.2.2",
+    "lighthouse": "12.8.2"
+  }
+}

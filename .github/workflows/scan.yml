@@ -1,0 +1,39 @@
+# The weekly scan for the Site Health agent: every Monday before the agent runs (09:43 Athens), whenever the agent
+# changes sites.json, and by hand. Results are committed to results/.
+name: scan
+
+on:
+  schedule:
+    - cron: '0 4 * * 1'
+  push:
+    branches: [main]
+    paths: [sites.json]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: scan
+  cancel-in-progress: false
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm install --no-audit --no-fund
+      - run: npm run scan
+      - name: Commit the results
+        run: |
+          git config user.name "site-monitor"
+          git config user.email "site-monitor@users.noreply.github.com"
+          git add results
+          git diff --cached --quiet && exit 0
+          git commit -m "scan $(date -u +%F)"
+          git pull --rebase origin main
+          git push origin HEAD:main
