@@ -2,12 +2,14 @@
   "name": "site-monitor",
   "private": true,
   "type": "module",
-  "description": "Lighthouse for every site on the Site Health dashboard, on a phone and a desktop; results/latest.json is what the weekly Site Health agent reads.",
+  "description": "Lighthouse and a scrolled axe-core check for every site on the Site Health dashboard, on a phone and a desktop; results/latest.json is what the weekly Site Health agent reads.",
   "scripts": {
     "scan": "node scan.mjs"
   },
   "dependencies": {
+    "axe-core": "4.10.3",
     "chrome-launcher": "1.2.2",
-    "lighthouse": "12.8.2"
+    "lighthouse": "12.8.2",
+    "puppeteer-core": "24.10.0"
   }
 }

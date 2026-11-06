@@ -1,7 +1,11 @@
 [
-  { "id": "arangia-gr", "name": "arangia", "url": "https://arangia.gr/", "maxPages": 5, "active": true },
-  { "id": "arogikos-gr", "name": "arogi", "url": "https://arogikos.gr/", "maxPages": 5, "active": true },
-  { "id": "la-islakos-gr", "name": "la-isla", "url": "https://la-islakos.gr/", "maxPages": 5, "active": true },
-  { "id": "onehublabs-com", "name": "onehub", "url": "https://onehublabs.com/", "maxPages": 5, "active": true },
-  { "id": "sunnydayskos-gr", "name": "sunnydays", "url": "https://sunnydayskos.gr/", "maxPages": 5, "active": true }
+  {"id":"arangia-gr","name":"arangia","url":"https://arangia.gr/","maxPages":5,"active":true},
+  {"id":"arogikos-gr","name":"arogi","url":"https://arogikos.gr/","maxPages":5,"active":true},
+  {"id":"delianco-com","name":"delian","url":"https://delianco.com/","maxPages":5,"active":true},
+  {"id":"feedgenix-com","name":"feedgenix","url":"https://feedgenix.com/","maxPages":5,"active":true},
+  {"id":"kalimeraapp-gr","name":"kalimera","url":"https://kalimeraapp.gr/","maxPages":5,"active":true},
+  {"id":"la-islakos-gr","name":"la-isla","url":"https://la-islakos.gr/","maxPages":5,"active":true},
+  {"id":"onehublabs-com","name":"onehub","url":"https://onehublabs.com/","maxPages":5,"active":true},
+  {"id":"ourbnb-gr","name":"ourbnb","url":"https://ourbnb.gr/","maxPages":5,"active":true},
+  {"id":"sunnydayskos-gr","name":"sunnydays","url":"https://sunnydayskos.gr/","maxPages":5,"active":true}
 ]

@@ -6,10 +6,14 @@
 //   sites.{id}.{mobile|desktop}.metrics  the home page's lab metrics (ms; CLS unitless)
 //   sites.{id}.{mobile|desktop}.perPage  every page's scores and metrics
 //   sites.{id}.{mobile|desktop}.issues   every audit below 0.9 on any page: {id, title, category, score, displayValue, pages}
+//   sites.{id}.{mobile|desktop}.axe      axe-core after scrolling each page, every reveal in, which Lighthouse's accessibility
+//                                        score skips: {count, issues: [{id, impact, nodes, example, pages}]}
 import fs from 'node:fs';
 import lighthouse from 'lighthouse';
 import * as chromeLauncher from 'chrome-launcher';
 import desktopConfig from 'lighthouse/core/config/desktop-config.js';
+import puppeteer from 'puppeteer-core';
+import { createRequire } from 'node:module';
 
 const CATEGORIES = ['performance', 'accessibility', 'best-practices', 'seo'];
 const METRICS = {
@@ -59,6 +63,39 @@ async function run(url, device) {
   }
 }
 
+const AXE = fs.readFileSync(createRequire(import.meta.url).resolve('axe-core/axe.min.js'), 'utf8');
+// a client's analytics and forms are left alone: nothing is sent to them by a scan
+const STOP = /googletagmanager|google-analytics|facebook|doubleclick|formsubmit/;
+const VIEW = { mobile: { width: 390, height: 844, isMobile: true, hasTouch: true, deviceScaleFactor: 2 }, desktop: { width: 1440, height: 900 } };
+
+/** axe-core on a page scrolled from top to bottom: text inside reveal-on-scroll sections is opacity 0 for Lighthouse. */
+async function scrolledAxe(url, device) {
+  const chrome = await chromeLauncher.launch({ chromeFlags: FLAGS });
+  const browser = await puppeteer.connect({ browserURL: `http://127.0.0.1:${chrome.port}`, defaultViewport: VIEW[device] });
+  try {
+    const page = await browser.newPage();
+    await page.setRequestInterception(true);
+    page.on('request', (r) => (STOP.test(r.url()) ? r.abort() : r.continue()));
+    await page.goto(url, { waitUntil: 'load', timeout: 60000 });
+    const wait = (ms) => new Promise((r) => setTimeout(r, ms));
+    await wait(1200);
+    const height = await page.evaluate(() => document.documentElement.scrollHeight);
+    for (let y = 0; y < height; y += Math.round(VIEW[device].height * 0.7)) {
+      await page.evaluate((v) => window.scrollTo(0, v), y);
+      await wait(220);
+    }
+    await wait(1500);
+    await page.evaluate(AXE);
+    return await page.evaluate(async () => {
+      const r = await window.axe.run(document, { resultTypes: ['violations'], runOnly: ['wcag2a', 'wcag2aa', 'wcag21aa', 'best-practice'] });
+      return r.violations.map((v) => ({ id: v.id, impact: v.impact, nodes: v.nodes.length, example: (v.nodes[0]?.any[0]?.message || v.nodes[0]?.target.join(' ') || '').slice(0, 200) }));
+    });
+  } finally {
+    await browser.disconnect();
+    await chrome.kill();
+  }
+}
+
 function summarise(lhr) {
   const scores = Object.fromEntries(CATEGORIES.map((c) => [c, Math.round((lhr.categories[c]?.score ?? 0) * 100)]));
   const metrics = Object.fromEntries(Object.entries(METRICS).map(([k, id]) => {
@@ -83,7 +120,17 @@ async function scanSite(site) {
   for (const device of ['mobile', 'desktop']) {
     const perPage = [];
     const issues = new Map();
+    const axe = new Map();
     for (const page of pages) {
+      try {
+        for (const found of await scrolledAxe(page, device)) {
+          const seen = axe.get(found.id);
+          if (!seen) axe.set(found.id, { ...found, pages: [page] });
+          else { seen.pages.push(page); seen.nodes += found.nodes; }
+        }
+      } catch (error) {
+        console.log(`${site.id} ${device} ${page} axe failed: ${error?.message ?? error}`);
+      }
       try {
         const { scores, metrics, issues: found } = summarise(await run(page, device));
         perPage.push({ url: page, scores, metrics });
@@ -112,6 +159,7 @@ async function scanSite(site) {
       pagesChecked: ok.length,
       perPage,
       issues: [...issues.values()].sort((a, b) => a.score - b.score),
+      axe: { count: [...axe.values()].reduce((n, i) => n + i.nodes, 0), issues: [...axe.values()] },
     };
   }
   return out;
