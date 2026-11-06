@@ -76,7 +76,10 @@ async function scrolledAxe(url, device) {
     const page = await browser.newPage();
     await page.setRequestInterception(true);
     page.on('request', (r) => (STOP.test(r.url()) ? r.abort() : r.continue()));
-    await page.goto(url, { waitUntil: 'load', timeout: 60000 });
+    // Hostinger's bot protection answers a browser calling itself headless with a "checking your browser" page
+    await page.setUserAgent((await browser.userAgent()).replace('HeadlessChrome', 'Chrome'));
+    const res = await page.goto(url, { waitUntil: 'load', timeout: 60000 });
+    if (res && res.status() >= 400) throw new Error(`answered ${res.status()}`);
     const wait = (ms) => new Promise((r) => setTimeout(r, ms));
     await wait(1200);
     const height = await page.evaluate(() => document.documentElement.scrollHeight);
