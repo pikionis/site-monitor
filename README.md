@@ -1,7 +1,20 @@
-# Site Health Monitor
+<p align="center">
+  <img src=".github/readme/banner.svg" alt="Site Health Monitor: Lighthouse and axe-core on every site, every week, on a phone and a desktop" width="100%">
+</p>
 
-**A weekly health check for the websites I build and look after, with an AI agent that fixes what
-drops.** Every site is measured on a phone and on a desktop for Performance, Accessibility, Best
+<h1 align="center">Site Health Monitor</h1>
+
+<p align="center"><b>A weekly health check for the websites I build and look after, with an AI agent that fixes what drops.</b></p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Node.js-22-1F6F8B?logo=nodedotjs&logoColor=white" alt="Node.js 22">
+  <img src="https://img.shields.io/badge/Lighthouse-12-1A7F4B?logo=lighthouse&logoColor=white" alt="Lighthouse 12">
+  <img src="https://img.shields.io/badge/axe--core-4-1A7F4B" alt="axe-core 4">
+  <img src="https://img.shields.io/badge/puppeteer--core-24-1F6F8B?logo=puppeteer&logoColor=white" alt="puppeteer-core 24">
+  <img src="https://img.shields.io/badge/GitHub_Actions-weekly_scan-16202A?logo=githubactions&logoColor=white" alt="GitHub Actions, weekly scan">
+</p>
+
+Every site is measured on a phone and on a desktop for Performance, Accessibility, Best
 Practices and SEO. The target is every score between 91 and 100. When a site falls under it, an agent
 reads the findings and opens a pull request on that site's repository, which I review and merge.
 
@@ -11,6 +24,7 @@ agent read what it writes.
 ## How it fits together
 
 ```mermaid
+%%{init: {'theme': 'base', 'themeVariables': {'primaryColor': '#EAEEF0', 'primaryTextColor': '#16202A', 'primaryBorderColor': '#1F6F8B', 'lineColor': '#5B6874', 'fontFamily': 'Schibsted Grotesk, Segoe UI, system-ui, sans-serif'}}}%%
 flowchart LR
     D[Dashboard<br/>add or remove a site] --> S[sites.json]
     S --> A[GitHub Action<br/>Mondays · on change · by hand]

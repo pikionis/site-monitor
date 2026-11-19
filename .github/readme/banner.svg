@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 440" width="1200" height="440" role="img" aria-label="Site Health Monitor: Lighthouse and axe-core on every site, every week, on a phone and a desktop">
+<style>
+text{font-family:'Schibsted Grotesk','Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif}
+.n{font-family:'JetBrains Mono',ui-monospace,'SFMono-Regular',Menlo,Consolas,monospace;font-weight:600}
+.l{font-size:13px;font-weight:600;letter-spacing:1.3px;fill:#5B6874}
+</style>
+<rect x="1" y="1" width="1198" height="438" rx="28" fill="#F3F5F6" stroke="#D6DDE2" stroke-width="2"/>
+<rect x="64" y="72" width="424" height="36" rx="18" fill="#EAEEF0"/>
+<circle cx="84" cy="90" r="4.5" fill="#1F6F8B"/>
+<text x="98" y="96" font-size="16" font-weight="600" fill="#1F6F8B">The scanner behind the Site Health dashboard</text>
+<text x="62" y="194" font-size="66" font-weight="700" fill="#16202A" letter-spacing="-1">Site Health</text>
+<text x="62" y="268" font-size="66" font-weight="700" fill="#16202A" letter-spacing="-1">Monitor</text>
+<rect x="64" y="286" width="72" height="6" rx="3" fill="#1F6F8B"/>
+<text x="64" y="338" font-size="22" font-weight="500" fill="#5B6874">Lighthouse and axe-core on every site,</text>
+<text x="64" y="370" font-size="22" font-weight="500" fill="#5B6874">every week, on a phone and a desktop.</text>
+<rect x="640" y="56" width="504" height="328" rx="14" fill="#FFFFFF" stroke="#D6DDE2" stroke-width="1.5"/>
+<text class="l" x="664" y="93">LOWEST SCORE OF ANY PAGE</text>
+<rect x="1002" y="73" width="118" height="28" rx="14" fill="#FBF0D9"/>
+<circle cx="1018" cy="87" r="4" fill="#9A6200"/>
+<text x="1030" y="92.5" font-size="14" font-weight="600" fill="#9A6200">Lowest 84</text>
+<line x1="640" x2="1144" y1="118" y2="118" stroke="#D6DDE2" stroke-width="1.5"/>
+<text x="800" y="148" text-anchor="middle" font-size="12.5" font-weight="500" fill="#5B6874">Performance</text>
+<text x="890" y="148" text-anchor="middle" font-size="12.5" font-weight="500" fill="#5B6874">Accessibility</text>
+<text x="980" y="148" text-anchor="middle" font-size="12.5" font-weight="500" fill="#5B6874">Best Practices</text>
+<text x="1070" y="148" text-anchor="middle" font-size="12.5" font-weight="500" fill="#5B6874">SEO</text>
+<text class="l" x="664" y="199">MOBILE</text>
+<circle cx="800" cy="194" r="25" fill="none" stroke="#EAEEF0" stroke-width="6"/><circle cx="800" cy="194" r="25" fill="none" stroke="#9A6200" stroke-width="6" stroke-linecap="round" stroke-dasharray="157.08" stroke-dashoffset="25.13" transform="rotate(-90 800 194)"/><text class="n" x="800" y="200" text-anchor="middle" font-size="17" fill="#9A6200">84</text>
+<circle cx="890" cy="194" r="25" fill="none" stroke="#EAEEF0" stroke-width="6"/><circle cx="890" cy="194" r="25" fill="none" stroke="#1A7F4B" stroke-width="6" stroke-linecap="round" stroke-dasharray="157.08" stroke-dashoffset="6.28" transform="rotate(-90 890 194)"/><text class="n" x="890" y="200" text-anchor="middle" font-size="17" fill="#1A7F4B">96</text>
+<circle cx="980" cy="194" r="25" fill="none" stroke="#EAEEF0" stroke-width="6"/><circle cx="980" cy="194" r="25" fill="none" stroke="#1A7F4B" stroke-width="6" stroke-linecap="round" stroke-dasharray="157.08" stroke-dashoffset="0.00" transform="rotate(-90 980 194)"/><text class="n" x="980" y="200" text-anchor="middle" font-size="17" fill="#1A7F4B">100</text>
+<circle cx="1070" cy="194" r="25" fill="none" stroke="#EAEEF0" stroke-width="6"/><circle cx="1070" cy="194" r="25" fill="none" stroke="#1A7F4B" stroke-width="6" stroke-linecap="round" stroke-dasharray="157.08" stroke-dashoffset="0.00" transform="rotate(-90 1070 194)"/><text class="n" x="1070" y="200" text-anchor="middle" font-size="17" fill="#1A7F4B">100</text>
+<text class="l" x="664" y="273">DESKTOP</text>
+<circle cx="800" cy="268" r="25" fill="none" stroke="#EAEEF0" stroke-width="6"/><circle cx="800" cy="268" r="25" fill="none" stroke="#1A7F4B" stroke-width="6" stroke-linecap="round" stroke-dasharray="157.08" stroke-dashoffset="6.28" transform="rotate(-90 800 268)"/><text class="n" x="800" y="274" text-anchor="middle" font-size="17" fill="#1A7F4B">96</text>
+<circle cx="890" cy="268" r="25" fill="none" stroke="#EAEEF0" stroke-width="6"/><circle cx="890" cy="268" r="25" fill="none" stroke="#1A7F4B" stroke-width="6" stroke-linecap="round" stroke-dasharray="157.08" stroke-dashoffset="3.14" transform="rotate(-90 890 268)"/><text class="n" x="890" y="274" text-anchor="middle" font-size="17" fill="#1A7F4B">98</text>
+<circle cx="980" cy="268" r="25" fill="none" stroke="#EAEEF0" stroke-width="6"/><circle cx="980" cy="268" r="25" fill="none" stroke="#1A7F4B" stroke-width="6" stroke-linecap="round" stroke-dasharray="157.08" stroke-dashoffset="0.00" transform="rotate(-90 980 268)"/><text class="n" x="980" y="274" text-anchor="middle" font-size="17" fill="#1A7F4B">100</text>
+<circle cx="1070" cy="268" r="25" fill="none" stroke="#EAEEF0" stroke-width="6"/><circle cx="1070" cy="268" r="25" fill="none" stroke="#1A7F4B" stroke-width="6" stroke-linecap="round" stroke-dasharray="157.08" stroke-dashoffset="0.00" transform="rotate(-90 1070 268)"/><text class="n" x="1070" y="274" text-anchor="middle" font-size="17" fill="#1A7F4B">100</text>
+<line x1="640" x2="1144" y1="310" y2="310" stroke="#D6DDE2" stroke-width="1.5"/>
+<text class="l" x="664" y="352">EACH WEEK</text>
+<line x1="786" x2="1096" y1="343.6" y2="343.6" stroke="#1A7F4B" stroke-width="1.5" stroke-dasharray="5 5"/>
+<text class="n" x="1106" y="348.1" font-size="13" fill="#1A7F4B">91</text>
+<polyline points="786.0,326.8 837.7,324.4 889.3,329.2 941.0,324.4 992.7,326.8 1044.3,324.4 1096.0,331.6" fill="none" stroke="#1F6F8B" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="1096.0" cy="331.6" r="4.5" fill="#1F6F8B"/>
+<polyline points="786.0,336.4 837.7,331.6 889.3,338.8 941.0,334.0 992.7,336.4 1044.3,331.6 1096.0,360.4" fill="none" stroke="#9A6200" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="1096.0" cy="360.4" r="4.5" fill="#9A6200"/>
+</svg>
