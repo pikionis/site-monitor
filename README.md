@@ -24,7 +24,6 @@ agent read what it writes.
 ## How it fits together
 
 ```mermaid
-%%{init: {'theme': 'base', 'themeVariables': {'primaryColor': '#EAEEF0', 'primaryTextColor': '#16202A', 'primaryBorderColor': '#1F6F8B', 'lineColor': '#5B6874', 'fontFamily': 'Schibsted Grotesk, Segoe UI, system-ui, sans-serif'}}}%%
 flowchart LR
     D[Dashboard<br/>add or remove a site] --> S[sites.json]
     S --> A[GitHub Action<br/>Mondays · on change · by hand]
